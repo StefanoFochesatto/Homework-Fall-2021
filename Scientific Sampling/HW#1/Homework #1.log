@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  3 SEP 2021 12:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  10 SEP 2021 14:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/Users/stefanofochesatto/Desktop/Homework-Fall-2021/Scientific Sampling/Homework #1.tex"
-(/Users/stefanofochesatto/Desktop/Homework-Fall-2021/Scientific Sampling/Homework #1.tex
+**"/Users/stefanofochesatto/Documents/Documents/College Work/Homework-Fall-2021/Scientific Sampling/HW#1/Homework #1.tex"
+(/Users/stefanofochesatto/Documents/Documents/College Work/Homework-Fall-2021/Scientific Sampling/HW#1/Homework #1.tex
 LaTeX2e <2018-12-01>
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
@@ -245,7 +245,7 @@ LaTeX Font Info:    Overwriting symbol font `largesymbolsA' in version `bold'
 LaTeX Info: Redefining \not on input line 1043.
 LaTeX Info: Redefining \textsquare on input line 1063.
 LaTeX Info: Redefining \openbox on input line 1064.
-) (/Users/stefanofochesatto/Desktop/Homework-Fall-2021/Scientific Sampling/Homework #1.aux)
+) (/Users/stefanofochesatto/Documents/Documents/College Work/Homework-Fall-2021/Scientific Sampling/HW#1/Homework #1.aux)
 \openout1 = `"Homework #1.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 91.
@@ -347,17 +347,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 183--188
 
  []
 
-[2] [3] (/Users/stefanofochesatto/Desktop/Homework-Fall-2021/Scientific Sampling/Homework #1.aux) ) 
+[2] [3] (/Users/stefanofochesatto/Documents/Documents/College Work/Homework-Fall-2021/Scientific Sampling/HW#1/Homework #1.aux) ) 
 Here is how much of TeX's memory you used:
  3709 strings out of 492616
- 49156 string characters out of 6129482
+ 49426 string characters out of 6129482
  117420 words of memory out of 5000000
  7590 multiletter control sequences out of 15000+600000
  22504 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 27i,10n,43p,350b,273s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 27i,10n,43p,380b,273s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/txfonts/txex.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on "/Users/stefanofochesatto/Desktop/Homework-Fall-2021/Scientific Sampling/Homework #1.pdf" (3 pages, 43342 bytes).
+Output written on "/Users/stefanofochesatto/Documents/Documents/College Work/Homework-Fall-2021/Scientific Sampling/HW#1/Homework #1.pdf" (3 pages, 43344 bytes).
 PDF statistics:
  43 PDF objects out of 1000 (max. 8388607)
  30 compressed objects within 1 object stream

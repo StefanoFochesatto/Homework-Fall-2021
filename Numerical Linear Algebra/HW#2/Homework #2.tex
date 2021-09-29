@@ -113,6 +113,10 @@
               \includegraphics[width=.75\textwidth]{figure1.png}
             \end{center}
           \end{figure}
+          \textbf{Code:}
+          \begin{center}
+            \lstinputlisting{firstplot.txt}
+          \end{center}
           Describing the solutions we can see that the ellipsoid and the parabolic cylinder intersect at a curve that looks like a taco shell (Don't know how else to describe the curve).
           When this curve is projected to the $x-y$ plane it only intersects the function $x = cos(\pi y)$ in two places. The solutions lie within $-1\leq x \leq 1$ because we are bounded by $x = cos(\pi y)$,
           $0\leq z$ because we are bounded by $z = y^2$, and $-2\leq y \leq 2$ and $z \leq 2$ because we are bounded by $x^2 + y^2 + z^2 = 4$.
@@ -279,10 +283,204 @@
             +3(4*8 - 7*5)
             = 0
           \end{equation*}
+          \vspace{.15in}
 
+          \item For any matrix $A \in \CC^{mxm}$, count the exact number of multiplication 
+          operations needed to compute the determinant of $A$ with expansion in minors.\\
+          \solution Let's first recall the first step to compute the determinant with the expansion in minors method for
+          matrix $A$, 
+          \begin{equation*}
+            det(A) = a_{1,1}*det(A_{m-1,m-1}) - a_{1,2}*det(A_{m-1,m-1}) + \dots a_{1,m}*det(A_{m-1,m-1})
+          \end{equation*}
+          Now consider forming a recurrence $f(m)$ for counting the number of of multiplications and note that we also know the base case for the 
+          recurrence $f(2) = 2$.
+          \begin{equation*}
+            f(m) = mf(m-1) + m 
+          \end{equation*}
+          Expanding we get the following, 
+          \begin{align*}
+            f(m) &= mf(m-1) + m \\
+            &= m((m-1)f(m-2) + (m-1)) + m \\
+            &= m(m-1)f(m-2) + m(m-1) + m \\
+            &= m(m-1)((m-2)f(m-3) + (m-2)) + m(m-1) + m \\
+            &= m(m-1)(m-2)f(m-3) + m(m-1)(m-2) + m(m-1) + m \\
+            &\dots\\
+            &= m(m-1)(m-2)\dots(3)f(2) + \sum_{i = 2}^{m-1} \dfrac{m!}{i!}\\
+            &= \dfrac{m!}{2!}f(2) + \sum_{i = 2}^{m-1} \dfrac{m!}{i!}\\
+            &= m! + \sum_{i = 2}^{m-1} \dfrac{m!}{i!}
+          \end{align*}
+          \vspace{.15in}
+
+          \item We know that if $det(A)  = 0$ then $A$ is not invertible. However, rounding error makes an exact
+          zero value extremely unlikely. On the other hand, the magnitude of $det(A)$ does not measure invertibility of $A$.
+          For instance give a formula for $det(A)$ when $A$ is diagonal and give a formula for $A^{-1}$ if it exists. Show by example that
+          $det(A)$ is often very large or very small even for well-conditioned diagonal matrices. \\
+          \solution Suppose diagonal matrix $A \in \CC^{mxm}$. Applying the cofactor expansion(expansion by minor) we get the following, 
+          \begin{equation*}
+            det(A) = a_{1,1}*det(A_{m-1,m-1}) - a_{1,2}*det(A_{m-1,m-1}) + \dots a_{1,m}*det(A_{m-1,m-1})
+          \end{equation*}
+          Note that only values $A_{i,i}$ will result in non-zero the equation above simplifies greatly, 
+          \begin{equation*}
+            det(A) = a_{1,1}*det(A_{m-1,m-1})
+          \end{equation*}
+          Applying this same simplification to each inner determinant we get, 
+          \begin{equation}
+            det(A) = \prod_{i = 1}^m a_{i,i}.
+          \end{equation}
+          Suppose this product is non-zero and therefore $A$ is invertible. We know from the matrix multiplication algorithm thant in order to get $A^{-1}A = I$ we need that, 
+          \begin{equation*}
+            A^{-1} =  \begin{bmatrix}
+              \frac{1}{a_{1,1}} & & \\
+              & \ddots & \\
+              & & \frac{1}{a_{m,m}}
+            \end{bmatrix}
+          \end{equation*}
+          What follows is that, 
+          \begin{equation*}
+            det(A) = \prod_{i = 1}^m \frac{1}{a_{i,i}}.
+          \end{equation*}
+          This outlines precisely why we experience rounding error on even the most well conditioned matrices. 
+          Consider a large diagonal matrix with extremely large values in the diagonal. From equation 3 we know the resultant determinant 
+          will be orders of magnitude larger. Alternatively we know from $4$ that the determinant of the inverse of the matrix 
+          will be orders of magnitude smaller. In both cases we experience the limits of IEEE representation. 
   \end{enumerate}
+\end{exercise}
+\vspace{.5in}
+
+\begin{exercise}{P7} Write a Matlab program which draws the unit balls shown in 3.2 on page 18 of Trefethen
+  ann Bau. That is, draw clean pictures of the unit ball of the one, two, infinity, an four norms. \\
+  \solution To create each plot I initialized several vectors in 3-space using the 
+  sphere command(You could do the same thing with meshgrid command).
+  I then coded the norm as an anonymous function (the infinity norm was a little different),
+  passing in each vector to compute the magnitude, and then normalizing. What we are left with are unit vectors with respect
+  to the corresponding norm. 
+  \begin{figure}[H]
+    \begin{center}
+      \caption{The one-norm unit ball}
+      \includegraphics[width=.76\textwidth]{1norm.png}
+    \end{center}
+  \end{figure}
+  \begin{figure}[H]
+    \begin{center}
+      \caption{The infinity-norm unit ball}
+      \includegraphics[width=.76\textwidth]{InfNorm.png}
+    \end{center}
+  \end{figure}
+  \begin{figure}[H]
+    \begin{center}
+      \caption{The two-norm unit ball}
+      \includegraphics[width=.76\textwidth]{2Norm.png}
+    \end{center}
+  \end{figure}
+  \begin{figure}[H]
+    \begin{center}
+      \caption{The four-norm unit ball}
+      \includegraphics[width=.76\textwidth]{4Norm.png}
+    \end{center}
+  \end{figure}
+  \textbf{Code:}
+  \begin{center}
+    \lstinputlisting{Norm.m}
+  \end{center}
+\end{exercise}
+
+\vspace{.25in}
+
+\begin{exercise}{2.1} Show that if a matrix is both triangular and unitary then it 
+  must be diagonal.\\
+  \solution Suppose a matrix $A$ is both triangular and unitary. By the definition of unitary we know that 
+  \begin{equation*}
+    A^*A = I. 
+  \end{equation*}
+  Or equivalently, 
+  \begin{equation*}
+    A^* = A^{-1}. 
+  \end{equation*}
+  Let's assume without loss of generality that $A$ is upper triangular. Recall that since $A$ is an upper triangular matrix then $A^{-1}$ must also be upper triangular (exercise 1.3).
+  Clearly if $A$ was not diagonal, $A^*$ would be lower triangular and $A^{-1}$ would be upper triangular, therefore 
+  it follows that $A$ must be diagonal. 
+\end{exercise}
+
+\vspace{.25in}
+
+\newpage
+\begin{exercise}{2.3} Let $A \in \CC^{mxm}$ be hermitian. An eigenvector of $A$ is a nonzero vector
+  $x \in \CC^m$ such that $Ax = \lambda x$ for some $\lambda \in \CC$ the corresponding eigenvalue. 
+  \begin{enumerate}[a.] 
+    \item Prove that all eigenvalues of $A$ are real.\\
+    \solution Suppose that $A \in \CC^{mxm}$ is hermitian and consider that for some eigenvector and eigenvalue $x, \lambda$ we have the following,
+    \begin{equation*}
+      Ax = \lambda x.
+    \end{equation*}
+    Left multiplying both sides by the $x^*$ we get the following,
+    \begin{align*}
+      x^*Ax &= x^*\lambda x\\
+       &= \lambda x^*x\\
+       &= \lambda ||x||^2
+    \end{align*}
+    Now consider taking the adjoint of both sides.
+    \begin{align*}
+      (x^*Ax)^* &= (\lambda ||x||^2)^*\\
+      x^*A^*x &= \bar{\lambda} ||x||^2
+    \end{align*}
+    Since $A$ is hermitian we know that $A^* = A$. Therefore by substitution we get, 
+    \begin{equation*}
+      x^*Ax = \bar{\lambda} ||x||^2
+    \end{equation*}
+    Note that by substituting $x^*Ax$ we can say that, 
+    \begin{equation*}
+      \lambda ||x||^2 = \bar{\lambda} ||x||^2
+    \end{equation*}
+    We know that $||x||^2$ must always be non-zero since it is defined by a non-zero eigenvector. 
+    Dividing both sides by $||x||^2$ we are left with $\lambda = \bar{\lambda}$ which is only possible when $\lambda$ is a real number.
+
+    \vspace{.15in}
+
+    \item Prove that if $x$ and $y$ are eigenvectors corresponding to distinct eigenvalues 
+    then $x$ and $y$ are orthogonal. \\
+    \solution Suppose $A$ is hermitian with eigenvectors $x$ and $y$ and their corresponding eigenvalues $\lambda_x$ and 
+    $\lambda_y$. By definition we know that, 
+    \begin{equation}
+      Ax = \lambda_xx
+    \end{equation}
+    \begin{equation}
+      Ay = \lambda_yy
+    \end{equation}
+    Taking equation 4, left multiplying $y^*$, and simplifying similarly to the last problem we get, 
+    \begin{align*}
+      y^*Ax &= y^* \lambda_xx,\\
+      &=  \lambda_x y^*x,\\
+      &=  \lambda_x <x,y>.
+    \end{align*}
+    Taking equation 5, left multiplying $x^*$, and simplifying similarly to the last problem we get, 
+    \begin{align*}
+      x^*Ay &= x^* \lambda_yy,\\
+      &=  \lambda_y y^*x,\\
+      &=  \lambda_y <x,y>.
+    \end{align*}
+    Taking the adjoint of both sides we get, 
+    \begin{align*}
+      (x^*Ay)^* &= \bar{\lambda_y} <x,y>,\\
+      (Ay)^*x &= \bar{\lambda_y} <x,y>,\\
+      y^*A^*x &= \bar{\lambda_y} <x,y>.
+    \end{align*}
+    Since $A$ is hermitian, by substitution we get that,
+    \begin{equation*}
+      y^*Ax = \bar{\lambda_y} <x,y>.
+    \end{equation*}
+    Substituting $y^*Ax$ and with some algebra we can see that,
+    \begin{align*}
+      \lambda_x <x,y> &= \bar{\lambda_y} <x,y>,\\
+      \lambda_x <x,y> - \bar{\lambda_y} <x,y> &= 0,\\
+      <x,y>(\lambda_x - \bar{\lambda_y}) &= 0.
+    \end{align*}
+    Since we know that $\lambda_x$ and $\bar{\lambda_y}$ are distinct real values it must be the case that 
+    $<x,y> = 0$ and therefore $x$ and $y$ are orthogonal. 
+    \vspace{.15in}
+  \end{enumerate} 
 
 \end{exercise}
+
 
 
 \end{document}
